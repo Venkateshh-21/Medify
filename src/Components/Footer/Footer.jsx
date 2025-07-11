@@ -90,7 +90,7 @@ const Footer = () => {
             {data.map((a, i) => {
               return (
                 < Box
-                  item
+                  
                   size={{ xs: 4, sm: 4, m: 4, lg: 4 }}
                   key={i + 1}
                   gap={"10px"}
@@ -120,7 +120,7 @@ const Footer = () => {
             {data2.map((a, i) => {
               return (
                 < Box
-                  item
+                  
                   size={{ xs: 4, sm: 4, m: 4, lg: 4 }}
                   key={i + 1}
                   gap={"10px"}
@@ -150,7 +150,7 @@ const Footer = () => {
             {data3.map((a, i) => {
               return (
                 < Box
-                  item
+                  
                   size={{ xs: 4, sm: 4, m: 4, lg: 4 }}
                   key={i + 1}
                   gap={"10px"}
