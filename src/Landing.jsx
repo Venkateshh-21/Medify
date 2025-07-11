@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Components/Navbar/Navbar";
-import Hero from "./Components/Herosection/hero";
+import Hero from "./Components/Herosection/Hero";
 import Searchoptions from "./Components/Searchoptions/Searchoptions";
 import Offers from "./Components/Offers/Offers";
 import Specialisation from "./Components/Findspecialisation/specialisation";
