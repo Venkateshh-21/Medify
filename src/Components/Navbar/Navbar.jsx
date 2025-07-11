@@ -20,7 +20,7 @@ const Navbar = () => {
       </div>
       <div className="navbar">
         <div className="logowrap">
-          <img src="/Group 7.png" alt="Logo" className="logo" />
+          <img src="../../assets/logo.png" alt="Logo" className="logo" />
         </div>
         <div className="nav-content">
           <Typography component="h4" sx={{ fontSize: "20px" }}>

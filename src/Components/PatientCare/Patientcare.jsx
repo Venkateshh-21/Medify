@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Container, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
+import { Box,  List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import banner from '../../assets/PatienCaring/Patientcare.png'
 import tick from '../../assets/PatienCaring/tick.png'
 
@@ -8,8 +8,8 @@ const Patientcare = () => {
 
   return (
     <Box pt={2} sx={{ background: 'linear-gradient(#E7F0FF, #E8F1FF)' }}>
-            <Container>
-                <Box container spacing={6} alignItems='center'sx={{padding:"30px",display:"flex",justifyContent:"center",gap:"100px"}}>
+        
+                <Box  spacing={6} alignItems='center'sx={{padding:"30px",display:"flex",justifyContent:"center",gap:"100px"}}>
 
                     <Box  xs={12} md={6}>
                         <Box
@@ -70,7 +70,7 @@ const Patientcare = () => {
                     </Box>
 
                 </Box>
-            </Container>
+            
         </Box>
   )
 }

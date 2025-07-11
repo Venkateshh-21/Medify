@@ -37,19 +37,19 @@ const DownloadApp = () => {
             sx={{ fontSize: "50px", fontWeight: "bold" }}
           >
             Download the <br />
-            <span>
+            
               <Typography
-              
+                component="span"
                 color="primary.main"
                 sx={{ display: "inline", fontWeight: "bold", fontSize: "50px" }}
-                component={"p"}
+                
               >
                 Medify
               </Typography>
-            </span>{" "}
+            
             App
           </Typography>
-          <Typography mt={2}variant="p" component={"p"} fontSize={"20px"}>Get the link to download the app</Typography>
+          <Typography mt={2} fontSize={"20px"}>Get the link to download the app</Typography>
           <form action="" style={{marginTop:"20px"}}>
             <TextField
               sx={{

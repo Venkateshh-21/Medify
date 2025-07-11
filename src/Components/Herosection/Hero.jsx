@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Typography, Button } from "@mui/material";
 
-import img from "../../../public/hero.png";
+import img from "../../assets/hero.png";
 
 const Hero = () => {
   return (
