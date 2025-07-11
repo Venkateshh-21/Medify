@@ -82,7 +82,7 @@ const Footer = () => {
         </Stack>
         <Box mt={4} sx={{ width: "30%",display:"flex", justifyContent:"space-between",gap:"20px"}}>
           <Stack
-            container
+            
             spacing={{ xs: 2, md: 3, lg: 3 }}
             columns={3}
             justifyContent="flex-start"
@@ -112,7 +112,7 @@ const Footer = () => {
             })}
           </Stack>
           <Stack
-            container
+            
             spacing={{ xs: 2, md: 3, lg: 3 }}
             columns={3}
             justifyContent="flex-start"
@@ -142,7 +142,7 @@ const Footer = () => {
             })}
           </Stack>
           <Stack
-            container
+            
             spacing={{ xs: 2, md: 3, lg: 3 }}
             columns={3}
             justifyContent="flex-start"
