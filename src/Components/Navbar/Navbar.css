@@ -1,0 +1,57 @@
+.bluebar {
+  text-align: center;
+  background-color: #2aa7ff;
+  color: white;
+  height: 30px;
+  width: 100%;
+  margin-top: 0px;
+  font-family: "Poppins", sans-serif;
+}
+.captionn {
+  padding-top: 10px;
+  font-size: 10px;
+}
+.navbar {
+  padding: 20px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  background: linear-gradient(#E8F1FF78),90%;
+}
+.logo {
+  height: 30px;
+  width: 100px;
+  
+}
+.logowrap{
+  display: flex;
+  align-items: center;
+}
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: rgb(16, 40, 81);
+}
+.mybookings {
+  background-color: #2aa7ff;
+  border-radius: 05px;
+  color: #ffffff;
+  border: none;
+}
+
+.mybookings:hover{
+    cursor: pointer;
+    background-color:#003153
+}
+
+
+.navbarwrap{
+  width: 100%;
+   margin: 0px;
+  padding: 0px;
+   box-sizing: border-box;
+}
