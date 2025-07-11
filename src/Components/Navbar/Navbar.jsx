@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Button } from "@mui/material";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import img from "../../assets/logo.png"
 
 const Navbar = () => {
   return (
@@ -20,7 +21,7 @@ const Navbar = () => {
       </div>
       <div className="navbar">
         <div className="logowrap">
-          <img src="../../assets/logo.png" alt="Logo" className="logo" />
+          <img src={img} alt="Logo" className="logo" />
         </div>
         <div className="nav-content">
           <Typography component="h4" sx={{ fontSize: "20px" }}>
