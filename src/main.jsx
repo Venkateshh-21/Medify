@@ -1,10 +1,29 @@
 import { StrictMode } from 'react'
 import { createTheme, ThemeProvider } from "@mui/material";
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
+import {  createBrowserRouter,RouterProvider } from 'react-router-dom';
 import App from './App.jsx'
+import Landing from "./Pages/Landing.jsx"
+import Search from './Pages/Search.jsx';
+import MyBookings from './Pages/MyBookings.jsx';
 import "./index.css"
 
+const router= createBrowserRouter([{
+  path:"/",
+  element:<App />,
+  children:[{
+    path:"/",
+    element:<Landing />
+  },{
+    
+    path:"search",
+    element:<Search />
+  },
+{
+  path:"my-bookings",
+  element:<MyBookings />
+}]
+}])
 const theme=createTheme({
   palette:{primary:{
     main:"#2472f2",
@@ -42,9 +61,9 @@ const theme=createTheme({
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
+    <RouterProvider router={router}>
     <App />
-    </BrowserRouter>
+    </RouterProvider>
     </ThemeProvider>
   </StrictMode>,
 )

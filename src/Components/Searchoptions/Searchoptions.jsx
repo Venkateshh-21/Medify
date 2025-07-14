@@ -1,133 +1,144 @@
-import { MenuItem, Select, Button, InputAdornment, Box } from "@mui/material";
-import { useEffect, useState } from "react";
-import SearchIcon from "@mui/icons-material/Search";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Box, Stack, Typography, InputAdornment, Button } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
-//Component to search the hospitals based on State and City selection.
-//API used to fetch details of hospital and set the values in formData
-export default function SearchHospital() {
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import srch from "../../assets/Search.png";
+import bs from "../../assets/bsearch.png";
+
+const Searchoptions = () => {
+  const navigate = useNavigate();
+  const [fData, setFData] = useState({
+    state: "",
+    city: "",
+  });
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  const [formData, setFormData] = useState({ state: "", city: "" });
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchStates = async () => {
       try {
-        const response = await axios.get(
+        let data = await axios.get(
           "https://meddata-backend.onrender.com/states"
         );
-        setStates(response.data);
+        setStates(data.data);
       } catch (error) {
-        console.error("Error fetching states:", error);
+        console.log(error.message);
       }
     };
-
     fetchStates();
   }, []);
 
+  const onChange = (e) => {
+    setFData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   useEffect(() => {
     const fetchCities = async () => {
-      setCities([]);
-      setFormData((prev) => ({ ...prev, city: "" }));
       try {
-        const data = await axios.get(
-          `https://meddata-backend.onrender.com/cities/${formData.state}`
+        const response = await axios.get(
+          `https://meddata-backend.onrender.com/cities/${fData.state}`
         );
-        setCities(data.data);
-        // console.log("city", data.data);
+        setCities(response.data);
       } catch (error) {
-        console.log("Error in fetching city:", error);
+        console.log(error.message);
       }
     };
-
-    if (formData.state != "") {
-      fetchCities();
-    }
-  }, [formData.state]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
+    fetchCities();
+  }, [fData.state]);
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (formData.state && formData.city) {
-      navigate(`/search?state=${formData.state}&city=${formData.city}`);
+    if (fData.city) {
+     return navigate(`/search?state=${fData.state}&city=${fData.city}`);
     }
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: "flex",
-        gap: 4,
-        justifyContent: "space-between",
-        flexDirection: { xs: "column", md: "row" },
-      }}
-    >
-      <Select
-        displayEmpty
-        id="state"
-        name="state"
-        value={formData.state}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        required
-        sx={{ minWidth: 200, width: "100%" }}
+    <div>
+      <form
+        action=""
+        onSubmit={onSubmit}
+        style={{
+         marginLeft:"5%",
+         marginRight:"5%",
+          display: "flex",
+          justifyContent: "center",
+          gap: "10%",
+          backgroundColor: "white",
+          padding: "30px",
+          borderRadius: "7px",
+        }}
       >
-        <MenuItem disabled value="" selected>
-          State
-        </MenuItem>
-        {states.map((state) => (
-          <MenuItem key={state} value={state}>
-            {state}
+        <Select
+          required
+          displayEmpty
+          id="state"
+          name="state"
+          value={fData.state}
+          sx={{ width: "20%", gap: "30px" }}
+          startAdornment={
+            <InputAdornment>
+              <Box component={"img"} src={srch} />
+            </InputAdornment>
+          }
+          onChange={onChange}
+          IconComponent={() => null}
+        >
+          <MenuItem disabled value="" selected>
+            State
           </MenuItem>
-        ))}
-      </Select>
-
-      <Select
-        displayEmpty
-        id="city"
-        name="city"
-        value={formData.city}
-        onChange={handleChange}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        required
-        sx={{ minWidth: 200, width: "100%" }}
-      >
-        <MenuItem disabled value="" selected>
-          City
-        </MenuItem>
-        {cities.map((city) => (
-          <MenuItem key={city} value={city}>
-            {city}
+          {states.map((a, i) => {
+            return (
+              <MenuItem key={i + 1} value={a}>
+                {a}
+              </MenuItem>
+            );
+          })}
+        </Select>
+        <Select
+          required
+          displayEmpty
+          id="city"
+          name="city"
+          value={fData.city}
+          sx={{ width: "20%", gap: "30px" }}
+          startAdornment={
+            <InputAdornment>
+              <Box component={"img"} src={srch} />
+            </InputAdornment>
+          }
+          IconComponent={() => null}
+          onChange={onChange}
+        >
+          <MenuItem disabled value="" selected sx={{ color: "gray" }}>
+            City
           </MenuItem>
-        ))}
-      </Select>
-
-      <Button
-        type="submit"
-        variant="contained"
-        size="large"
-        startIcon={<SearchIcon />}
-        sx={{ py: "15px", px: 8, flexShrink: 0 }}
-        disableElevation
-      >
-        Search
-      </Button>
-    </Box>
+          {cities.map((a, i) => {
+            return (
+              <MenuItem key={i + 1} value={a}>
+                {a}
+              </MenuItem>
+            );
+          })}
+        </Select>
+        <Button
+        id="searchBtn"
+          type="submit"
+          variant="contained"
+          sx={{
+            gap: "5px",
+            width: "10%",
+            height: "50px",
+            textTransform: "none",
+          }}
+        >
+          <Box component={"img"} src={bs} height={"20px"} width={"20px"} />
+          Search
+        </Button>
+      </form>
+    </div>
   );
-}
+};
+
+export default Searchoptions;

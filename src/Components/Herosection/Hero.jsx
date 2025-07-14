@@ -1,5 +1,6 @@
 import React from "react";
 import { Stack, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import img from "../../assets/hero.png";
 
@@ -34,12 +35,12 @@ const Hero = () => {
           Connect instantly with a 24x7 specialist or choose to video visit a
           particular doctor.
         </Typography>
-        <Button
+       <Link to={"search"} style={{height:"10%",width:"25%"}}> <Button
           variant="contained"
-          sx={{ width: "25%", height: "10%", whiteSpace: "nowrap",fontSize:"20px" }}
+          sx={{ width: "100%", height: "100%", whiteSpace: "nowrap",fontSize:"20px" }}
         >
           Find Centers
-        </Button>
+        </Button> </Link>
       </Stack>
       <img src={img} alt="" style={{ height: "100%", width: "50%" }} />
     </div>

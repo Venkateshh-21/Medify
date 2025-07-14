@@ -20,9 +20,9 @@ const Navbar = () => {
         </Typography>
       </div>
       <div className="navbar">
-        <div className="logowrap">
+        <Link to={"/"}><div className="logowrap">
           <img src={img} alt="Logo" className="logo" />
-        </div>
+        </div></Link>
         <div className="nav-content">
           <Typography component="h4" sx={{ fontSize: "20px" }}>
             Find Doctors
