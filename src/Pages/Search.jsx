@@ -109,7 +109,7 @@ const Search = () => {
                   }}
                 >
                   {`${hospitals.length} medical centers available `}
-                  <span style={{textTransform:"capitalize"}}>{city.toLocaleLowerCase()}</span>
+                  <span >{city.toLocaleLowerCase()}</span>
                 </Typography>
               </Box>
               <Box
