@@ -30,18 +30,59 @@ const BookingModal = ({
   const onChange=(e)=>{
     setEmail(e.target.value)
   }
+  // const onSubmit = (e) => {
+  //   e.preventDefault();
+  //   let bookingsDetails = [];
+
+  //   if (localStorage.getItem("bookings")) {
+  //     bookingsDetails = localStorage.getItem("bookings");
+  //   }
+  //   const prevBookings = JSON.parse(bookingsDetails);
+  //   const data = JSON.stringify([
+  //     ...prevBookings,
+  //     { ...bookings, bookingEmail: email },
+  //   ]);
+  //   localStorage.setItem("bookings", data);
+  //   setOpenSnack(true);
+  //   setIsmodalOpen(false);
+  //   setEmail("");
+  // };
   const onSubmit = (e) => {
     e.preventDefault();
-   const prevBookings = localStorage.getItem("bookings") || "[]";
+    triggerEvent();
 
-    let data = JSON.stringify([
-      ...prevBookings,
-      { ...bookings, bookingEmail: email },
-    ]);
-    localStorage.setItem("bookings", data);
-    setOpenSnack(true);
+    const retrive = localStorage.getItem("bookings") || "[]";
+
+    const oldBookings = JSON.parse(retrive);
+
+    localStorage.setItem(
+      "bookings",
+      JSON.stringify([
+        ...oldBookings,
+        { ...bookings, bookingEmail: email },
+      ])
+    );
+
+
+   setOpenSnack(true);
     setIsmodalOpen(false);
     setEmail("");
+  };
+
+  const triggerEvent = () => {
+   
+    window.dataLayer = window.dataLayer || [];
+
+    
+    function triggerFirstVisitEvent() {
+      window.dataLayer.push({
+        event: "first_visit",
+        eventDate: new Date().toISOString(), 
+      });
+    }
+
+    triggerFirstVisitEvent();
+    console.log("submitted")
   };
   return (
     <div>

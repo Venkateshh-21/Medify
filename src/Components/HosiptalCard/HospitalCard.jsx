@@ -3,6 +3,7 @@ import hos from "../../assets/hospital.png"
 import thum from "../../assets/thumb.png"
 import { Box,Stack,Typography,Chip,Divider,Button } from '@mui/material'
 import Calendar from "../Calendar/Calendar"
+import {format} from "date-fns"
 
 
 const HospitalCard = ({details,slots,handleBooking,fromBookings}) => {
@@ -38,7 +39,7 @@ const HospitalCard = ({details,slots,handleBooking,fromBookings}) => {
             lineHeight={1}
             whiteSpace={"nowrap"}
           >
-            {details["Hospital Name"].toLowerCase()}
+            {details["Hospital Name"]}
           </Typography>
           <Typography
             textTransform="capitalize"
@@ -46,7 +47,7 @@ const HospitalCard = ({details,slots,handleBooking,fromBookings}) => {
             fontSize={13}
             fontWeight={700}
           >
-            {`${details["City"].toLowerCase()}, ${details["State"]}`}
+            {`${details["City"]}, ${details["State"]}`}
           </Typography>
           <Typography fontSize={14} mb={1}>
             {details["Hospital Type"]}

@@ -108,8 +108,8 @@ const Search = () => {
                     paddingLeft: "10px",
                   }}
                 >
-                  {`${hospitals.length} medical centers available `}
-                  <span >{city.toLocaleLowerCase()}</span>
+                  {`${hospitals.length} medical centers available in `}
+                  <span>{capFirst(city)}</span>
                 </Typography>
               </Box>
               <Box
