@@ -109,7 +109,7 @@ const Search = () => {
                   }}
                 >
                   {`${hospitals.length} medical centers available in `}
-                  <span>{capFirst(city)}</span>
+                  <span>{city.toLowerCase()}</span>
                 </Typography>
               </Box>
               <Box
