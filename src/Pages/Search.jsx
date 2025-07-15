@@ -6,9 +6,14 @@ import Searchoptions from "../Components/Searchoptions/Searchoptions";
 import { useSearchParams } from "react-router-dom";
 import verify from "../assets/verified.png";
 import HospitalCard from "../Components/HosiptalCard/HospitalCard";
+import BookingModal from "../Components/BookingModal/BookingModal";
 import img from "../assets/senso.png";
+import CustomSnack from "../Components/Snackbar/Snackbar";
 
 function capFirst(a) {
+   if (typeof a !== 'string' || a.length === 0) {
+    return ""; // Return empty string if not a string or empty
+  }
   let res = "";
   for (let i = 0; i < a.length; i++) {
     if (i == 0) {
@@ -34,6 +39,7 @@ const Search = () => {
   const [bookings, setBookings] = useState({});
   const [isModalOpen, setIsmodalOpen] = useState(false);
   const [openSnack, setOpenSnack] = useState(false);
+  console.log(bookings);
 
   useEffect(() => {
     const updateData = () => {
@@ -59,7 +65,11 @@ const Search = () => {
     };
     fetchHospitals();
   }, [state, city]);
-  console.log(hospitals);
+
+  const handleBookingModal = (data) => {
+    setBookings(data);
+    setIsmodalOpen(true);
+  };
   return (
     <div style={{ backgroundColor: "#EAF2FF" }}>
       <Navbar />
@@ -119,7 +129,15 @@ const Search = () => {
           <Stack>
             {hospitals.length
               ? hospitals.map((a) => {
-                  return <HospitalCard />;
+                  return (
+                    <HospitalCard
+                      key={a["Provider ID"]}
+                      details={a}
+                      slots={slots}
+                      handleBooking={handleBookingModal}
+                      fromBookings={false}
+                    />
+                  );
                 })
               : ""}
             {load ? <Typography>Loading ...</Typography> : ""}
@@ -138,8 +156,21 @@ const Search = () => {
             )}
           </Stack>
         </Container>
-        <Box component={"img"} src={img} width={500} height={"auto"} />
+        <Box
+          mt={"130px"}
+          component={"img"}
+          src={img}
+          width={500}
+          height={"300px"}
+        />
       </Box>
+      <BookingModal
+        isModalOpen={isModalOpen}
+        setIsmodalOpen={setIsmodalOpen}
+        setOpenSnack={setOpenSnack}
+        bookings={bookings}
+      />
+      <CustomSnack openSnack={openSnack} setOpenSnack={setOpenSnack} />
     </div>
   );
 };
